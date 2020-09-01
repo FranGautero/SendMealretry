@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -34,14 +35,26 @@ public class MainActivity extends AppCompatActivity {
         EditText yearVencimiento = findViewById(R.id.editTextNumber4);
         EditText cbu = findViewById(R.id.editTextNumber5);
         EditText aliasCbu = findViewById(R.id.editTextTextPersonName2);
-        Switch cargaInicial = findViewById(R.id.switch1);
-        SeekBar sb1 = findViewById(R.id.seekBar2);
+        final Switch cargaInicial = findViewById(R.id.switch1);
+        final SeekBar sb1 = findViewById(R.id.seekBar2);
         CheckBox tyc = findViewById(R.id.checkBox);
         Button Registrar = findViewById(R.id.button);
 
+        cargaInicial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cargaInicial.isChecked()){
+                    sb1.setVisibility(View.VISIBLE);
+                }
+                else {
+                    sb1.setVisibility(View.GONE);
+                }
 
 
-
+            }
+        });
 
     }
 }
+
+
