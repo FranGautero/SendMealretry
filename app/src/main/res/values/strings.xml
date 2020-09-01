@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">SendMealretry</string>
+    <string name="nombre">Nombre</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="repetir_contraseña">Repetir Contraseña</string>
+    <string name="email">E-mail</string>
+    <string name="tipotarjeta">Tipo de Tarjeta:</string>
+    <string name="numerotarjeta">Número de Tarjeta</string>
+    <string name="CVV">CVV</string>
+    <string name="debito">Débito</string>
+    <string name="credito">Crédito</string>
+    <string name="fechavencimiento">Fecha de Vencimiento:</string>
+    <string name="mes">Mes</string>
+    <string name="año">Año</string>
+    <string name="cbu">CBU</string>
+    <string name="aliascbu">Alias CBU</string>
+    <string name="qcargainicial">Realizar Carga Inicial?</string>
+    <string name="creditoinicial">Crédito Inicial</string>
+    <string name="tyc">Acepto los Términos y Condiciones</string>
+    <string name="registrar">Registrar</string>
 </resources>
