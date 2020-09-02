@@ -91,6 +91,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/CVV"
+            android:enabled="false"
             android:textColor="@color/Gray"
             android:inputType="number" />
     </LinearLayout>
@@ -113,6 +114,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/mes"
+            android:enabled="false"
             android:textColor="@color/Gray"
             android:inputType="number" />
 
@@ -123,6 +125,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/año"
+            android:enabled="false"
             android:textColor="@color/Gray"
             android:inputType="number" />
     </LinearLayout>
@@ -162,6 +165,8 @@
         android:id="@+id/seekBar2"
         android:layout_width="match_parent"
         android:visibility="gone"
+        android:progress="100"
+        android:max="1500"
         android:layout_height="wrap_content" />
 
     <CheckBox
@@ -174,6 +179,7 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/registrar" />
 
 </LinearLayout>
