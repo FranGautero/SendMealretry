@@ -152,77 +152,89 @@ public class MainActivity extends AppCompatActivity {
 
                 // 2.. valida clave
 
+                Boolean registroOk1 = true;
+
                 EditText passAux = findViewById(R.id.editTextTextPassword);
                 EditText passValidationAux = findViewById(R.id.editTextTextPassword2);
 
                 if(!passAux.getText().toString().isEmpty()){
 
                     if(passAux.getText().toString().equals(passValidationAux.getText().toString())){
-                        registroOk = true;
+                        registroOk1 = true;
                     }else{
                         Toast.makeText(MainActivity.this, "Las Claves no Coinciden", Toast.LENGTH_SHORT).show();
-                        registroOk = false;
+                        registroOk1 = false;
                     }
 
                 }else{
                     Toast.makeText(MainActivity.this, "Falta ingresar Clave", Toast.LENGTH_SHORT).show();
-                    registroOk = false;
+                    registroOk1 = false;
                 }
 
                 // 3.. valida Tarjeta
 
+                Boolean registroOk2 = true;
+
                 EditText numeroTarjetaAux = findViewById(R.id.editTextNumber);
                 if(!numeroTarjetaAux.getText().toString().isEmpty()){
                     if(numeroTarjetaAux.getText().toString().length() == 20){
-                        registroOk = true;
+                        registroOk2 = true;
                     }else{
                         Toast.makeText(MainActivity.this, "Nro de Tarjeta Invalido", Toast.LENGTH_SHORT).show();
-                        registroOk = false;
+                        registroOk2 = false;
                     }
                 }else{
                     Toast.makeText(MainActivity.this, "Falta Número de Tarjeta", Toast.LENGTH_SHORT).show();
-                    registroOk = false;
+                    registroOk2 = false;
                 }
 
                 // 4.. Valida Tipo de Tarjeta
 
+                Boolean registroOk3 = true;
+
                 RadioButton debito = findViewById(R.id.radioButton);
                 RadioButton credito = findViewById(R.id.radioButton2);
                 if(debito.isChecked() || credito.isChecked()){
-                    registroOk = true;
+                    registroOk3 = true;
                 }else{
                     Toast.makeText(MainActivity.this, "Falta Seleccionar Tipo de Tarjeta", Toast.LENGTH_SHORT).show();
-                    registroOk = false;
+                    registroOk3 = false;
                 }
 
                 // 5.. Valida CVV
 
+                Boolean registroOk4 = true;
+
                 EditText cvvAux = findViewById(R.id.editTextNumber2);
                 if(!cvvAux.getText().toString().isEmpty()){
                     if(cvvAux.getText().toString().length() == 3){
-                        registroOk = true;
+                        registroOk4 = true;
                     }else{
                         Toast.makeText(MainActivity.this, "CVV Inválido", Toast.LENGTH_SHORT).show();
-                        registroOk = false;
+                        registroOk4 = false;
                     }
                 }else{
                     Toast.makeText(MainActivity.this, "Falta CVV", Toast.LENGTH_SHORT).show();
-                    registroOk = false;
+                    registroOk4 = false;
                 }
 
                 // 6.. Valida Fecha Vencimiento
+
+                Boolean registroOk5 = true;
 
                 EditText mesVencimientoAux = findViewById(R.id.editTextNumber3);
                 EditText yearVencimientoAux = findViewById(R.id.editTextNumber4);
 
                 if(!mesVencimientoAux.getText().toString().isEmpty() && !yearVencimientoAux.getText().toString().isEmpty()){
-                        registroOk = true;
+                        registroOk5 = true;
                 }else{
                     Toast.makeText(MainActivity.this, "Falta Completar Fecha de Vencimiento", Toast.LENGTH_SHORT).show();
-                    registroOk = false;
+                    registroOk5 = false;
                 }
 
                 // 7.. Valida Monto de la SeekBar
+
+                Boolean registroOk6 = true;
 
                 Switch cargaInicialAux = findViewById(R.id.switch1);
                 SeekBar sb1Aux = findViewById(R.id.seekBar2);
@@ -230,21 +242,19 @@ public class MainActivity extends AppCompatActivity {
                 if(cargaInicialAux.isChecked()){
 
                     if(sb1Aux.getProgress() > 0){
-                        registroOk = true;
+                        registroOk6 = true;
                     }else{
                         Toast.makeText(MainActivity.this, "El Valor del monto inicial debe ser mayor a 0", Toast.LENGTH_SHORT).show();
-                        registroOk = false;
+                        registroOk6 = false;
                     }
 
-                }else{
-                    registroOk = true;
                 }
 
 
 
 
 
-                if(registroOk) Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                if(registroOk && registroOk1 && registroOk2  && registroOk3  && registroOk4  && registroOk5  && registroOk6 ) Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
             }
 
         });
