@@ -18,6 +18,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     Boolean ValidationsOK;
@@ -31,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         EditText pass = findViewById(R.id.editTextTextPassword);
         EditText passValidation = findViewById(R.id.editTextTextPassword2);
         final EditText email = findViewById(R.id.editTextTextEmailAddress);
-        RadioButton debito = findViewById(R.id.radioButton);
-        RadioButton credito = findViewById(R.id.radioButton2);
+
         EditText numeroTarjeta = findViewById(R.id.editTextNumber);
         EditText cbu = findViewById(R.id.editTextNumber5);
         EditText aliasCbu = findViewById(R.id.editTextTextPersonName2);
@@ -183,48 +184,71 @@ public class MainActivity extends AppCompatActivity {
                     registroOk = false;
                 }
 
+                // 4.. Valida Tipo de Tarjeta
+
+                RadioButton debito = findViewById(R.id.radioButton);
+                RadioButton credito = findViewById(R.id.radioButton2);
+                if(debito.isChecked() || credito.isChecked()){
+                    registroOk = true;
+                }else{
+                    Toast.makeText(MainActivity.this, "Falta Seleccionar Tipo de Tarjeta", Toast.LENGTH_SHORT).show();
+                    registroOk = false;
+                }
+
+                // 5.. Valida CVV
+
+                EditText cvvAux = findViewById(R.id.editTextNumber2);
+                if(!cvvAux.getText().toString().isEmpty()){
+                    if(cvvAux.getText().toString().length() == 3){
+                        registroOk = true;
+                    }else{
+                        Toast.makeText(MainActivity.this, "CVV Inválido", Toast.LENGTH_SHORT).show();
+                        registroOk = false;
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this, "Falta CVV", Toast.LENGTH_SHORT).show();
+                    registroOk = false;
+                }
+
+                // 6.. Valida Fecha Vencimiento
+
+                EditText mesVencimientoAux = findViewById(R.id.editTextNumber3);
+                EditText yearVencimientoAux = findViewById(R.id.editTextNumber4);
+
+                if(!mesVencimientoAux.getText().toString().isEmpty() && !yearVencimientoAux.getText().toString().isEmpty()){
+                        registroOk = true;
+                }else{
+                    Toast.makeText(MainActivity.this, "Falta Completar Fecha de Vencimiento", Toast.LENGTH_SHORT).show();
+                    registroOk = false;
+                }
+
+                // 7.. Valida Monto de la SeekBar
+
+                Switch cargaInicialAux = findViewById(R.id.switch1);
+                SeekBar sb1Aux = findViewById(R.id.seekBar2);
+
+                if(cargaInicialAux.isChecked()){
+
+                    if(sb1Aux.getProgress() > 0){
+                        registroOk = true;
+                    }else{
+                        Toast.makeText(MainActivity.this, "El Valor del monto inicial debe ser mayor a 0", Toast.LENGTH_SHORT).show();
+                        registroOk = false;
+                    }
+
+                }else{
+                    registroOk = true;
+                }
+
+
+
+
 
                 if(registroOk) Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
             }
 
         });
 
-
-
-        //Validaciones
-
-        boolean emailValido = false;
-        if (!email.getText().toString().isEmpty()) {
-            if (email.getText().toString().split("@", 2).length > 0) {
-                emailValido = true;
-            }
-        }
-
-        boolean claveValida = false;
-        if (!pass.getText().toString().isEmpty() && !passValidation.getText().toString().isEmpty()) {
-            if (pass.getText().toString() == passValidation.getText().toString()) {
-                claveValida = true;
-            }
-        }
-
-        Boolean tipoTarjeta = false;
-        if (debito.isChecked() || credito.isChecked()) {
-            tipoTarjeta = true;
-        }
-
-        boolean cvvValido = false;
-        EditText cvvAux = findViewById(R.id.editTextNumber2);
-        if (cvvAux.getText().toString().length() > 3) cvvValido = true;
-
-        Boolean mesValido = false;
-        Boolean añoValido = false;
-
-        EditText mesVencimientoAux = findViewById(R.id.editTextNumber3);
-        EditText yearVencimientoAux = findViewById(R.id.editTextNumber4);
-
-        if (!mesVencimientoAux.getText().toString().isEmpty() && !yearVencimientoAux.getText().toString().isEmpty()){
-
-        }
 
 
 
