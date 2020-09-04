@@ -80,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:maxLength="20"
             android:hint="@string/numerotarjeta"
             android:textColor="@color/Gray"
             android:inputType="number" />
