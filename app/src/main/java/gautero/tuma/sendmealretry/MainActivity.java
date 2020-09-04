@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
         EditText nombre = findViewById(R.id.editTextTextPersonName);
         EditText pass = findViewById(R.id.editTextTextPassword);
         EditText passValidation = findViewById(R.id.editTextTextPassword2);
-        final EditText email = findViewById(R.id.editTextTextEmailAddress);
-
+        EditText email = findViewById(R.id.editTextTextEmailAddress);
         EditText numeroTarjeta = findViewById(R.id.editTextNumber);
         EditText cbu = findViewById(R.id.editTextNumber5);
         EditText aliasCbu = findViewById(R.id.editTextTextPersonName2);
@@ -222,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                     registroOk4 = false;
                 }
 
-                // 6.. Valida Fecha Vencimiento
+                // 6.. Valida Fecha Vencimiento y que sea mayor a 3 meses
 
                 Boolean registroOk5 = true;
 
@@ -230,7 +229,30 @@ public class MainActivity extends AppCompatActivity {
                 EditText yearVencimientoAux = findViewById(R.id.editTextNumber4);
 
                 if(!mesVencimientoAux.getText().toString().isEmpty() && !yearVencimientoAux.getText().toString().isEmpty()){
-                        registroOk5 = true;
+                    DateFormat formato = new SimpleDateFormat("MM-yy");
+                    String fechaIngresadaStr = mesVencimientoAux.getText().toString()+"-"+yearVencimientoAux.getText().toString();
+                    Date fechaIngresada = null;
+
+                    try {
+                        fechaIngresada = formato.parse(fechaIngresadaStr);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    Calendar calActual = Calendar.getInstance();
+                    Date fechaActual = new Date();
+                    calActual.setTime(fechaActual);
+                    calActual.add(Calendar.MONTH, 2);
+
+                    Calendar calIngresada = Calendar.getInstance();
+                    calIngresada.setTime(fechaIngresada);
+
+                    if (calIngresada.before(calActual)){
+                        Toast.makeText(MainActivity.this, "El Vencimiento de la Tarjeta debe ser mayor a 3 meses", Toast.LENGTH_SHORT).show();
+                        registroOk5 = false;
+                    } else {
+                        registroOk5=true;
+                    }
                 }else{
                     Toast.makeText(MainActivity.this, "Falta Completar Fecha de Vencimiento", Toast.LENGTH_SHORT).show();
                     registroOk5 = false;
@@ -254,36 +276,9 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                // 8.. Valida Fecha de Vencimiento
 
-                Boolean registroOk7 = true;
-                
-                DateFormat formato = new SimpleDateFormat("MM-yy");
-                String fechaIngresadaStr = mesVencimientoAux.getText().toString()+"-"+yearVencimientoAux.getText().toString();
-                Date fechaIngresada = null;
 
-                try {
-                    fechaIngresada = formato.parse(fechaIngresadaStr);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                Calendar calActual = Calendar.getInstance();
-                Date fechaActual = new Date();
-                calActual.setTime(fechaActual);
-                calActual.add(Calendar.MONTH, 2);
-
-                Calendar calIngresada = Calendar.getInstance();
-                calIngresada.setTime(fechaIngresada);
-
-                if (calIngresada.before(calActual)){
-                    Toast.makeText(MainActivity.this, "El Vencimiento de la Tarjeta debe ser mayor a 3 meses", Toast.LENGTH_SHORT).show();
-                    registroOk7 = false;
-                } else {
-                    registroOk7=true;
-                }
-
-                if(registroOk && registroOk1 && registroOk2  && registroOk3  && registroOk4  && registroOk5  && registroOk6 && registroOk7) Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                if(registroOk && registroOk1 && registroOk2  && registroOk3  && registroOk4  && registroOk5  && registroOk6) Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
             }
 
         });
