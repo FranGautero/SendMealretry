@@ -18,7 +18,11 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -250,11 +254,36 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+                // 8.. Valida Fecha de Vencimiento
 
+                Boolean registroOk7 = true;
+                
+                DateFormat formato = new SimpleDateFormat("MM-yy");
+                String fechaIngresadaStr = mesVencimientoAux.getText().toString()+"-"+yearVencimientoAux.getText().toString();
+                Date fechaIngresada = null;
 
+                try {
+                    fechaIngresada = formato.parse(fechaIngresadaStr);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
+                Calendar calActual = Calendar.getInstance();
+                Date fechaActual = new Date();
+                calActual.setTime(fechaActual);
+                calActual.add(Calendar.MONTH, 2);
 
-                if(registroOk && registroOk1 && registroOk2  && registroOk3  && registroOk4  && registroOk5  && registroOk6 ) Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                Calendar calIngresada = Calendar.getInstance();
+                calIngresada.setTime(fechaIngresada);
+
+                if (calIngresada.before(calActual)){
+                    Toast.makeText(MainActivity.this, "El Vencimiento de la Tarjeta debe ser mayor a 3 meses", Toast.LENGTH_SHORT).show();
+                    registroOk7 = false;
+                } else {
+                    registroOk7=true;
+                }
+
+                if(registroOk && registroOk1 && registroOk2  && registroOk3  && registroOk4  && registroOk5  && registroOk6 && registroOk7) Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
             }
 
         });

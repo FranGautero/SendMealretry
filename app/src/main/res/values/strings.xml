@@ -11,7 +11,7 @@
     <string name="credito">Crédito</string>
     <string name="fechavencimiento">Fecha de Vencimiento:</string>
     <string name="mes">MM</string>
-    <string name="año">AAAA</string>
+    <string name="año">AA</string>
     <string name="cbu">CBU</string>
     <string name="aliascbu">Alias CBU</string>
     <string name="qcargainicial">Realizar Carga Inicial?</string>
