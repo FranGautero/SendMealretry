@@ -15,13 +15,22 @@
         tools:layout_editor_absoluteY="1dp">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
+            android:id="@+id/toolbarRegistro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            app:menu="@menu/tbmenu"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme"
+            app:menu="@menu/tbmenu">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sendmeal"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_marginEnd="?android:attr/actionBarSize"
+                />
+        </androidx.appcompat.widget.Toolbar>
 
         <TextView
             android:id="@+id/textView6"

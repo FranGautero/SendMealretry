@@ -24,4 +24,6 @@
     <string name="a3">a3</string>
     <string name="registrousuario">Registrarse</string>
     <string name="addplato">Agregar Plato</string>
+    <string name="selectplato">Seleccionar Plato</string>
+    <string name="sendmeal">SendMeal</string>
 </resources>

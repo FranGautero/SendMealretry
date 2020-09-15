@@ -7,11 +7,20 @@
     tools:context=".SelectPlato">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPlato"
+        android:id="@+id/toolbarSelectPlato"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:menu="@menu/gobackmenu"/>
+        app:menu="@menu/gobackmenu">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/selectplato"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:layout_marginEnd="?android:attr/actionBarSize"
+            />
+    </androidx.appcompat.widget.Toolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>
