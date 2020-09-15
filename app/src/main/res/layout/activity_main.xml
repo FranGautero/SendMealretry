@@ -7,6 +7,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:menu="@menu/gobackmenu">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registrousuario"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:layout_marginEnd="?android:attr/actionBarSize"
+            />
+    </androidx.appcompat.widget.Toolbar>
+
+
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="match_parent"

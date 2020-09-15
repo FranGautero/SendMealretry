@@ -18,4 +18,10 @@
     <string name="creditoinicial">Crédito Inicial</string>
     <string name="tyc">Acepto los Términos y Condiciones</string>
     <string name="registrar">Registrar</string>
+    <string name="home">Home</string>
+    <string name="a1">a1</string>
+    <string name="a2">a2</string>
+    <string name="a3">a3</string>
+    <string name="registrousuario">Registrarse</string>
+    <string name="addplato">Agregar Plato</string>
 </resources>
