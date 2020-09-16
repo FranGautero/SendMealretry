@@ -15,13 +15,14 @@
         tools:layout_editor_absoluteY="1dp">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarRegistro"
+            android:id="@+id/toolbarHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:menu="@menu/tbmenu">
+            app:menu="@menu/tbmenu"
+            >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,25 +38,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/home"
+
             android:textAlignment="center" />
 
-        <Button
-            android:id="@+id/buttonTOA1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/a1" />
-
-        <Button
-            android:id="@+id/buttonTOA2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/a2" />
-
-        <Button
-            android:id="@+id/buttonTOA3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/a3" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
