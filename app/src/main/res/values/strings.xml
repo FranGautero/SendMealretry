@@ -26,4 +26,8 @@
     <string name="addplato">Agregar Plato</string>
     <string name="selectplato">Seleccionar Plato</string>
     <string name="sendmeal">SendMeal</string>
+    <string name="desc">Descripción</string>
+    <string name="precio">Precio</string>
+    <string name="calorias">Calorias</string>
+    <string name="guardar">GUARDAR</string>
 </resources>

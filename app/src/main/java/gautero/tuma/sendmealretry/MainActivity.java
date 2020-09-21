@@ -278,7 +278,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                if(registroOk && registroOk1 && registroOk2  && registroOk3  && registroOk4  && registroOk5  && registroOk6) Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                if(registroOk && registroOk1 && registroOk2  && registroOk3  && registroOk4  && registroOk5  && registroOk6){
+                    Toast.makeText(MainActivity.this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
 
         });

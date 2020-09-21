@@ -31,27 +31,21 @@
                 />
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:text="TextView" />
-
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/nombreplato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="@string/nombre"/>
 
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/descripcionplato"
             android:layout_width="match_parent"
             android:layout_height="122dp"
             android:ems="10"
             android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:hint="@string/desc" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,29 +53,29 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextTextPersonName5"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-
-            <EditText
-                android:id="@+id/editTextTextPersonName6"
+                android:id="@+id/precioplato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="numberDecimal"
+                android:hint="@string/precio" />
+
+            <EditText
+                android:id="@+id/caloriasplato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:hint="@string/calorias" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/guardarbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/guardar" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
