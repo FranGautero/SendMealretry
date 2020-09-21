@@ -1,12 +1,14 @@
 package gautero.tuma.sendmealretry;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -43,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
         Switch cargaInicial = findViewById(R.id.switch1);
         CheckBox tyc = findViewById(R.id.checkBox);
         Button Registrar = findViewById(R.id.button);
+
+        Toolbar tb = findViewById(R.id.toolbarRegistro);
+
+        tb.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                finish();
+                return false;
+            }
+        });
 
 
         //Cuando el Switch de carga inicial esta en true la seeker bar se activa

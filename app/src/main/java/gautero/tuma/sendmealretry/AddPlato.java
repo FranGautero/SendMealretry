@@ -1,9 +1,12 @@
 package gautero.tuma.sendmealretry;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +25,7 @@ public class AddPlato extends AppCompatActivity {
 
         guardar.setOnClickListener(new View.OnClickListener(){
 
-            private static final String TAG = "log";
+
 
             @Override
             public void onClick(View view) {
@@ -43,6 +46,17 @@ public class AddPlato extends AppCompatActivity {
 
             }
 
+        });
+
+        Toolbar tb = findViewById(R.id.toolbarPlato);
+
+        tb.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                finish();
+                return false;
+            }
         });
 
 
