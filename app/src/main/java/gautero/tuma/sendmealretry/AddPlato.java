@@ -37,8 +37,8 @@ public class AddPlato extends AppCompatActivity {
                 Plato platonuevo = new Plato();
                 platonuevo.setNombre(nombre.getText().toString());
                 platonuevo.setDescripcion(descripcion.getText().toString());
-                platonuevo.setPrecio(Float.parseFloat(precio.getText().toString()));
-                platonuevo.setCalorias(Float.parseFloat(calorias.getText().toString()));
+                platonuevo.setPrecio(Integer.parseInt(precio.getText().toString()));
+                platonuevo.setCalorias(Integer.parseInt(calorias.getText().toString()));
 
                 Toast.makeText(AddPlato.this, "Plato Guardado", Toast.LENGTH_SHORT).show();
 

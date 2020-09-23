@@ -41,11 +41,15 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull PlatoHolder holder, int position) {
 
-        String pr = "Precio: " + platoList.get(position).getPrecio();
+        String pr = "   Precio: $" + platoList.get(position).getPrecio();
         holder.precio.setText(pr);
-        String cl = "Calorias: " + platoList.get(position).getCalorias();
+        String cl = "   Calorias: " + platoList.get(position).getCalorias() + "  ";
         holder.calorias.setText(cl);
         holder.imagePlato.setImageResource(platoList.get(position).getImg());
+        String tl = "   " + platoList.get(position).getNombre();
+        holder.titulo.setText(tl);
+        String dc = "   Descripción: " + platoList.get(position).getDescripcion();
+        holder.desc.setText(dc);
 
     }
 
@@ -56,7 +60,7 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
 
     public class PlatoHolder extends RecyclerView.ViewHolder{
 
-        TextView precio, calorias;
+        TextView precio, calorias, titulo, desc;
         ImageView imagePlato;
 
         public PlatoHolder(@NonNull View itemView) {
@@ -65,6 +69,8 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
             precio = itemView.findViewById(R.id.textPrecio);
             calorias = itemView.findViewById(R.id.textCalorias);
             imagePlato = itemView.findViewById(R.id.imagePlato);
+            titulo = itemView.findViewById(R.id.textNombre);
+            desc = itemView.findViewById(R.id.textDescripcion);
 
         }
     }

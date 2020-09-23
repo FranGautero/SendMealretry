@@ -4,8 +4,8 @@ public class Plato {
 
     private String nombre;
     private String descripcion;
-    private float precio;
-    private float calorias;
+    private int precio;
+    private int calorias;
     private int img;
 
     public int getImg() {
@@ -32,19 +32,19 @@ public class Plato {
         this.descripcion = descripcion;
     }
 
-    public float getCalorias() {
+    public int getCalorias() {
         return calorias;
     }
 
-    public void setCalorias(float calorias) {
+    public void setCalorias(int calorias) {
         this.calorias = calorias;
     }
 
-    public float getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 }
