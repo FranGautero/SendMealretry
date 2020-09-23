@@ -6,6 +6,15 @@ public class Plato {
     private String descripcion;
     private float precio;
     private float calorias;
+    private int img;
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
+    }
 
     public String getNombre() {
         return nombre;
