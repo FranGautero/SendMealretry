@@ -58,6 +58,18 @@ public class PlatoDao {
         item6.setDescripcion("plato random");
         item6.setNombre("Ramen Opción 6");
         item6.setImg(R.drawable.ramen);
+        Plato item7 = new Plato();
+        item7.setCalorias(8000);
+        item7.setPrecio(1000);
+        item7.setDescripcion("plato random");
+        item7.setNombre("Ramen Opción 7");
+        item7.setImg(R.drawable.ramen);
+        Plato item8 = new Plato();
+        item8.setCalorias(8000);
+        item8.setPrecio(1100);
+        item8.setDescripcion("plato random");
+        item8.setNombre("Ramen Opción 8");
+        item8.setImg(R.drawable.ramen);
 
 //        Log.d(TAG, "PlatoDao: " + listaPlato.size());
 
@@ -67,6 +79,9 @@ public class PlatoDao {
         lp.add(item4);
         lp.add(item5);
         lp.add(item6);
+        lp.add(item7);
+        lp.add(item8);
+
 
         this.listaPlato = lp;
 
