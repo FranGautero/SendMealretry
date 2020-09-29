@@ -5,15 +5,16 @@
 
         <item
             android:id="@+id/action_settings1"
-            android:title="@string/a1"
-    />
+            android:title="@string/a1" />
         <item
             android:id="@+id/action_settings2"
-            android:title="@string/a2"
-            />
+            android:title="@string/a2" />
         <item
             android:id="@+id/action_settings3"
-            android:title="@string/a3"
-            />
+            android:title="@string/a3" />
+
+        <item
+                android:id="@+id/action_settings4"
+                android:title="@string/GestionarPedido" />
 
 </menu>

@@ -30,4 +30,12 @@
     <string name="precio">Precio</string>
     <string name="calorias">Calorias</string>
     <string name="guardar">GUARDAR</string>
+    <string name="PedidoActivity">Pedido Activity</string>
+    <string name="GestionarPedido">Realizar Pedido</string>
+    <string name="DatosPedido">Entrega</string>
+    <string name="Direccion">Dirección</string>
+    <string name="Delivery">Delivery</string>
+    <string name="Carrito">Carrito</string>
+    <string name="Confirmar">Confirmar Pedido</string>
+
 </resources>

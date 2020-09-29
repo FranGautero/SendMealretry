@@ -37,6 +37,10 @@ public class HomeActivity extends AppCompatActivity {
                         Intent i3 = new Intent(HomeActivity.this, SelectPlato.class);
                         startActivity(i3);
                         return false;
+                    case R.id.action_settings4:
+                        Intent i4 = new Intent(HomeActivity.this, PedidoActivity.class);
+                        startActivity(i4);
+                        return false;
                     default:
                         return false;
 
