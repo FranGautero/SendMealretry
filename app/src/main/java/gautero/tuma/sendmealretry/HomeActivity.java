@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
-
+    final static int CODIGO_BUSCAR_PLATO = 420;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,10 @@ public class HomeActivity extends AppCompatActivity {
 
                     case R.id.action_settings3:
                         Intent i3 = new Intent(HomeActivity.this, SelectPlato.class);
+                        int a = 2;
+                        i3.putExtra("addCode", a);
                         startActivity(i3);
+
                         return false;
                     case R.id.action_settings4:
                         Intent i4 = new Intent(HomeActivity.this, PedidoActivity.class);

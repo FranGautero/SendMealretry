@@ -1,6 +1,8 @@
 package gautero.tuma.sendmealretry.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import gautero.tuma.sendmealretry.R;
+import gautero.tuma.sendmealretry.SelectPlato;
 import gautero.tuma.sendmealretry.model.Plato;
 
 public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdapter.PlatoHolder>{
 
     List<Plato> platoList;
+
     Context context;
+
+
+
 
     public PlatoRecyclerAdapter(Context ct, List<Plato> pl){
 
@@ -39,17 +46,32 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlatoHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PlatoHolder holder, final int position) {
 
         String pr = "   Precio: $" + platoList.get(position).getPrecio();
         holder.precio.setText(pr);
         String cl = "   Calorias: " + platoList.get(position).getCalorias() + "  ";
         holder.calorias.setText(cl);
         holder.imagePlato.setImageResource(platoList.get(position).getImg());
-        String tl = "   " + platoList.get(position).getNombre();
+        final String tl = "   " + platoList.get(position).getNombre();
         holder.titulo.setText(tl);
         String dc = "   Descripción: " + platoList.get(position).getDescripcion();
         holder.desc.setText(dc);
+        holder.imageAdd.setImageResource(R.drawable.ic_baseline_add_24);
+
+        Activity sp = SelectPlato.fa;
+        if(sp.getIntent().getExtras().getInt("addCode") == 2){
+            holder.imageAdd.setVisibility(View.INVISIBLE);
+        }
+        holder.imageAdd.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               Activity sp2 = SelectPlato.fa;
+               Intent intentResultado = new Intent();
+               intentResultado.putExtra("plato", platoList.get(position).getNombre());
+               sp2.setResult(Activity.RESULT_OK, intentResultado);
+               sp2.finish();
+           }
+        });
 
     }
 
@@ -61,7 +83,7 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
     public class PlatoHolder extends RecyclerView.ViewHolder{
 
         TextView precio, calorias, titulo, desc;
-        ImageView imagePlato;
+        ImageView imagePlato, imageAdd;
 
         public PlatoHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,7 +93,13 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
             imagePlato = itemView.findViewById(R.id.imagePlato);
             titulo = itemView.findViewById(R.id.textNombre);
             desc = itemView.findViewById(R.id.textDescripcion);
+            imageAdd = itemView.findViewById(R.id.imageViewAdd);
 
         }
+
+        public ImageView getImageAdd() {
+            return imageAdd;
+        }
+
     }
 }

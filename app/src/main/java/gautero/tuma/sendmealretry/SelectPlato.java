@@ -5,8 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -16,8 +21,12 @@ import gautero.tuma.sendmealretry.model.PlatoDao;
 
 public class SelectPlato extends AppCompatActivity {
 
+    public static Activity fa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        fa = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_plato);
 
@@ -40,5 +49,9 @@ public class SelectPlato extends AppCompatActivity {
         PlatoRecyclerAdapter platoAdapter = new PlatoRecyclerAdapter(this, platoList);
         platoRecycler.setAdapter(platoAdapter);
         platoRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+
     }
 }
