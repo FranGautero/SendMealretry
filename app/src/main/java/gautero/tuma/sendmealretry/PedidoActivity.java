@@ -12,10 +12,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import gautero.tuma.sendmealretry.asyncTaskRes.ConfirmarPedidoTask;
+
 public class PedidoActivity extends AppCompatActivity {
 
     private static final int CODIGO_VER_PLATOS = 421;
-    Button sp;
+    Button sp, cp;
     String lista = "";
 
 
@@ -35,8 +37,6 @@ public class PedidoActivity extends AppCompatActivity {
             }
         });
 
-      //  ImageView add = findViewById(R.id.imageViewAdd);
-      //  add.setVisibility(View.VISIBLE);
 
         sp = findViewById(R.id.buttonAddPlato);
         sp.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +51,18 @@ public class PedidoActivity extends AppCompatActivity {
             }
 
         });
+
+        cp = findViewById(R.id.buttonConfirmar);
+        cp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Se lanza tarea Asincrónica
+                ConfirmarPedidoTask ctask = new ConfirmarPedidoTask();
+                ctask.execute(lista);
+                finish();
+            }
+        });
+
     }
 
     @Override
