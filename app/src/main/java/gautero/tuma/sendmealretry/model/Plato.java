@@ -1,7 +1,12 @@
 package gautero.tuma.sendmealretry.model;
 
-public class Plato {
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity
+public class Plato {
+    @PrimaryKey(autoGenerate = true)
+    private long id;
     private String nombre;
     private String descripcion;
     private int precio;
@@ -47,4 +52,13 @@ public class Plato {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
 }
