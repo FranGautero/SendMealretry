@@ -37,6 +37,7 @@
     <string name="Delivery">Delivery</string>
     <string name="Carrito">Carrito</string>
     <string name="Confirmar">Confirmar Pedido</string>
+    <string name="Confirmado">Pedido Confirmado</string>
 
 
 </resources>

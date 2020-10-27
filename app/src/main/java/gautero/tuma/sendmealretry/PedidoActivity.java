@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import gautero.tuma.sendmealretry.asyncTaskRes.ConfirmarPedidoTask;
@@ -57,7 +56,7 @@ public class PedidoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Se lanza tarea Asincrónica
-                ConfirmarPedidoTask ctask = new ConfirmarPedidoTask();
+                ConfirmarPedidoTask ctask = new ConfirmarPedidoTask(PedidoActivity.this);
                 ctask.execute(lista);
                 finish();
             }
