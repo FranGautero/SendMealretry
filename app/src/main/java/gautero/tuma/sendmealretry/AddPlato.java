@@ -3,6 +3,7 @@ package gautero.tuma.sendmealretry;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,16 +13,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
+import gautero.tuma.sendmealretry.database.AppRepository;
 import gautero.tuma.sendmealretry.model.Plato;
 
-public class AddPlato extends AppCompatActivity {
+public class AddPlato extends AppCompatActivity implements AppRepository.OnResultCallback{
 
+    Application context = this.getApplication();
+
+   AppRepository.OnResultCallback callback = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_plato);
 
         Button guardar = findViewById(R.id.guardarbutton);
+        final Plato platonuevo = new Plato();
 
         guardar.setOnClickListener(new View.OnClickListener(){
 
@@ -34,19 +42,25 @@ public class AddPlato extends AppCompatActivity {
                 EditText descripcion = findViewById(R.id.descripcionplato);
                 EditText precio = findViewById(R.id.precioplato);
                 EditText calorias = findViewById(R.id.caloriasplato);
-                Plato platonuevo = new Plato();
+
                 platonuevo.setNombre(nombre.getText().toString());
                 platonuevo.setDescripcion(descripcion.getText().toString());
                 platonuevo.setPrecio(Integer.parseInt(precio.getText().toString()));
                 platonuevo.setCalorias(Integer.parseInt(calorias.getText().toString()));
+                platonuevo.setImg(R.drawable.ramen);
+
+                AppRepository repository = new AppRepository(context, callback);
+                repository.insertar(platonuevo);
 
                 Toast.makeText(AddPlato.this, "Plato Guardado", Toast.LENGTH_SHORT).show();
-
                 finish();
 
             }
 
         });
+
+//        AppRepository repository = new AppRepository(this.getApplication(), this);
+//        repository.insertar(platonuevo);
 
         Toolbar tb = findViewById(R.id.toolbarPlato);
 
@@ -60,6 +74,11 @@ public class AddPlato extends AppCompatActivity {
         });
 
 
+
+    }
+
+    @Override
+    public void onResult(List result) {
 
     }
 }

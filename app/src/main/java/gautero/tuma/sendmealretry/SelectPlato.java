@@ -6,20 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
 
 import gautero.tuma.sendmealretry.adapters.PlatoRecyclerAdapter;
+import gautero.tuma.sendmealretry.database.AppRepository;
 import gautero.tuma.sendmealretry.model.Plato;
-import gautero.tuma.sendmealretry.model.PlatoDao;
+import gautero.tuma.sendmealretry.database.PlatoDao;
 
-public class SelectPlato extends AppCompatActivity {
+public class SelectPlato extends AppCompatActivity implements AppRepository.OnResultCallback{
 
     public static Activity fa;
 
@@ -42,16 +39,26 @@ public class SelectPlato extends AppCompatActivity {
             }
         });
 
-        PlatoDao platolistCreator = new PlatoDao();
-        List<Plato> platoList = platolistCreator.getListaPlato();
+        //generar la lista de platos de la db
 
+        AppRepository repository = new AppRepository(this.getApplication(), this);
+        repository.buscarTodos();
+
+//        RecyclerView platoRecycler = findViewById(R.id.platoRecycler);
+//        PlatoRecyclerAdapter platoAdapter = new PlatoRecyclerAdapter(this, platoList);
+//        platoRecycler.setAdapter(platoAdapter);
+//        platoRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+
+    }
+
+    @Override
+    public void onResult(List result) {
         RecyclerView platoRecycler = findViewById(R.id.platoRecycler);
-        PlatoRecyclerAdapter platoAdapter = new PlatoRecyclerAdapter(this, platoList);
+        PlatoRecyclerAdapter platoAdapter = new PlatoRecyclerAdapter(this, result);
         platoRecycler.setAdapter(platoAdapter);
         platoRecycler.setLayoutManager(new LinearLayoutManager(this));
-
-
-
-
     }
 }

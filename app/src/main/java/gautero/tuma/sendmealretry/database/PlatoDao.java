@@ -1,6 +1,4 @@
-package gautero.tuma.sendmealretry.model;
-
-import android.util.Log;
+package gautero.tuma.sendmealretry.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -8,10 +6,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import gautero.tuma.sendmealretry.R;
+import gautero.tuma.sendmealretry.model.Plato;
 
 @Dao
 public interface PlatoDao {

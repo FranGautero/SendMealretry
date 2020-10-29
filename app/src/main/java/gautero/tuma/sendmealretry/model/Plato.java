@@ -1,16 +1,27 @@
 package gautero.tuma.sendmealretry.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "Plato")
 public class Plato {
     @PrimaryKey(autoGenerate = true)
     private long id;
+
+    @ColumnInfo(name = "nombre")
     private String nombre;
+
+    @ColumnInfo(name = "descripcion")
     private String descripcion;
+
+    @ColumnInfo(name = "precio")
     private int precio;
+
+    @ColumnInfo(name = "calorias")
     private int calorias;
+
+    @ColumnInfo(name = "img")
     private int img;
 
     public int getImg() {
