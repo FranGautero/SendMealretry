@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 import gautero.tuma.sendmealretry.R;
@@ -67,6 +69,10 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
            public void onClick(View v) {
                Activity sp2 = SelectPlato.fa;
                Intent intentResultado = new Intent();
+
+               Gson gson = new Gson();
+               String myJson = gson.toJson(platoList.get(position));
+               intentResultado.putExtra("myjson", myJson);
                intentResultado.putExtra("plato", platoList.get(position).getNombre());
                sp2.setResult(Activity.RESULT_OK, intentResultado);
                sp2.finish();

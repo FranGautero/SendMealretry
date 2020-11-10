@@ -5,13 +5,16 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import gautero.tuma.sendmealretry.model.Pedido;
 import gautero.tuma.sendmealretry.model.Plato;
 
-@Database(entities = {Plato.class}, version = 1)
+@Database(entities = {Plato.class, Pedido.class}, version = 1)
+@TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase database;
@@ -22,6 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public abstract PlatoDao platoDao();
+    public abstract PedidoDao pedidoDao();
 
     public synchronized static AppDatabase getInstance(Context context){
 
