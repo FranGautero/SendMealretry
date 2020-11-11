@@ -1,5 +1,6 @@
 package gautero.tuma.sendmealretry.asyncTaskRes;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -21,21 +22,24 @@ import static java.lang.System.currentTimeMillis;
 
 public class ConfirmarPedidoTask extends AsyncTask<String,Integer, List<Pedido>>{
 
-    private PedidoDao dao;
-    private OnPedidoResultCallback callback;
+
+    @SuppressLint("StaticFieldLeak")
     private Context context;
 
-    public ConfirmarPedidoTask(Context context, PedidoDao dao1, OnPedidoResultCallback resultCallback) {
+    public ConfirmarPedidoTask(Context context) {
         this.context = context;
-        this.dao = dao1;
-        this.callback = resultCallback;
+
     }
 
     @Override
     protected List<Pedido> doInBackground(String... strings) {
 
-        // no se porque va esto aca pero asi esta en todos lados
-        return dao.buscarTodos();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -48,7 +52,6 @@ public class ConfirmarPedidoTask extends AsyncTask<String,Integer, List<Pedido>>
         alarmManager.set(AlarmManager.RTC_WAKEUP , currentTime , pendingIntent) ;
 
         super.onPostExecute(pedidos);
-        callback.onResult(pedidos);
 
     }
 

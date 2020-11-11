@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.util.List;
 
+import gautero.tuma.sendmealretry.PedidoActivity;
 import gautero.tuma.sendmealretry.asyncTaskRes.ConfirmarPedidoTask;
 import gautero.tuma.sendmealretry.model.Pedido;
 import gautero.tuma.sendmealretry.model.Plato;
@@ -14,9 +15,9 @@ import gautero.tuma.sendmealretry.model.Plato;
 public class PedidoRepository implements OnPedidoResultCallback{
 
     private PedidoDao pedidoDao;
-    private AppRepository.OnResultCallback callback;
+    private OnPedidoResultCallback callback;
 
-    public PedidoRepository(Application application, AppRepository.OnResultCallback context){
+    public PedidoRepository(Application application, OnPedidoResultCallback context){
         AppDatabase db = AppDatabase.getInstance(application);
         pedidoDao = db.pedidoDao();
         callback = context;
@@ -58,10 +59,10 @@ public class PedidoRepository implements OnPedidoResultCallback{
             }
         });
     }
- //pasar el context correcto
+
 
     public void buscarTodos() {
-        new ConfirmarPedidoTask(, pedidoDao, this).execute();
+        new BuscarPedidos(pedidoDao, this).execute();
     }
 
     @Override

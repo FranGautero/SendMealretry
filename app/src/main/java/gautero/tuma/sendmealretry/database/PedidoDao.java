@@ -24,7 +24,7 @@ public interface PedidoDao {
     void actualizar(Pedido pedido);
 
     @Query("SELECT * FROM pedidos WHERE id = :id LIMIT 1")
-    Plato buscar(String id);
+    Pedido buscar(String id);
 
     @Query("SELECT * FROM pedidos")
     List<Pedido> buscarTodos();
