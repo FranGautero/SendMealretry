@@ -6,38 +6,36 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Plato")
 public class Plato {
+
     @PrimaryKey(autoGenerate = true)
     private long id;
 
     @ColumnInfo(name = "nombre")
-    private String nombre;
+    private String titulo;
 
     @ColumnInfo(name = "descripcion")
     private String descripcion;
 
     @ColumnInfo(name = "precio")
-    private int precio;
+    private Double precio;
 
     @ColumnInfo(name = "calorias")
-    private int calorias;
+    private Integer calorias;
 
-    @ColumnInfo(name = "img")
-    private int img;
-
-    public int getImg() {
-        return img;
+    public long getId() {
+        return id;
     }
 
-    public void setImg(int img) {
-        this.img = img;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescripcion() {
@@ -48,28 +46,24 @@ public class Plato {
         this.descripcion = descripcion;
     }
 
-    public int getCalorias() {
-        return calorias;
-    }
-
-    public void setCalorias(int calorias) {
-        this.calorias = calorias;
-    }
-
-    public int getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
-    public long getId() {
-        return id;
+    public Integer getCalorias() {
+        return calorias;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCalorias(Integer calorias) {
+        this.calorias = calorias;
     }
+
+
+
+
 
 }

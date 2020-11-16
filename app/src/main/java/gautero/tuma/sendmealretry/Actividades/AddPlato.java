@@ -1,12 +1,10 @@
-package gautero.tuma.sendmealretry;
+package gautero.tuma.sendmealretry.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Application;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import gautero.tuma.sendmealretry.R;
 import gautero.tuma.sendmealretry.database.AppRepository;
 import gautero.tuma.sendmealretry.model.Plato;
 
@@ -43,11 +42,11 @@ public class AddPlato extends AppCompatActivity implements AppRepository.OnResul
                 EditText precio = findViewById(R.id.precioplato);
                 EditText calorias = findViewById(R.id.caloriasplato);
 
-                platonuevo.setNombre(nombre.getText().toString());
+                platonuevo.setTitulo(nombre.getText().toString());
                 platonuevo.setDescripcion(descripcion.getText().toString());
-                platonuevo.setPrecio(Integer.parseInt(precio.getText().toString()));
+                platonuevo.setPrecio(Double.parseDouble(precio.getText().toString()));
                 platonuevo.setCalorias(Integer.parseInt(calorias.getText().toString()));
-                platonuevo.setImg(R.drawable.ramen);
+
 
                 AppRepository repository = new AppRepository(context, callback);
                 repository.insertar(platonuevo);

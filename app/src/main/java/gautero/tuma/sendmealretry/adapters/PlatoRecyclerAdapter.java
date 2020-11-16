@@ -3,7 +3,6 @@ package gautero.tuma.sendmealretry.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import com.google.gson.Gson;
 import java.util.List;
 
 import gautero.tuma.sendmealretry.R;
-import gautero.tuma.sendmealretry.SelectPlato;
+import gautero.tuma.sendmealretry.Actividades.SelectPlato;
 import gautero.tuma.sendmealretry.model.Plato;
 
 public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdapter.PlatoHolder>{
@@ -54,8 +53,8 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
         holder.precio.setText(pr);
         String cl = "   Calorias: " + platoList.get(position).getCalorias() + "  ";
         holder.calorias.setText(cl);
-        holder.imagePlato.setImageResource(platoList.get(position).getImg());
-        final String tl = "   " + platoList.get(position).getNombre();
+        holder.imagePlato.setImageResource(R.drawable.ramen);
+        final String tl = "   " + platoList.get(position).getTitulo();
         holder.titulo.setText(tl);
         String dc = "   Descripción: " + platoList.get(position).getDescripcion();
         holder.desc.setText(dc);
@@ -73,7 +72,7 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
                Gson gson = new Gson();
                String myJson = gson.toJson(platoList.get(position));
                intentResultado.putExtra("myjson", myJson);
-               intentResultado.putExtra("plato", platoList.get(position).getNombre());
+               intentResultado.putExtra("plato", platoList.get(position).getTitulo());
                sp2.setResult(Activity.RESULT_OK, intentResultado);
                sp2.finish();
            }

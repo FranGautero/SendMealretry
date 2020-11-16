@@ -1,16 +1,12 @@
 package gautero.tuma.sendmealretry.database;
 
 import android.app.Application;
-import android.content.Context;
 import android.util.Log;
 
 
 import java.util.List;
 
-import gautero.tuma.sendmealretry.PedidoActivity;
-import gautero.tuma.sendmealretry.asyncTaskRes.ConfirmarPedidoTask;
 import gautero.tuma.sendmealretry.model.Pedido;
-import gautero.tuma.sendmealretry.model.Plato;
 
 public class PedidoRepository implements OnPedidoResultCallback{
 

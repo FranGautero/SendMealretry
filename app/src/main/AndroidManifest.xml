@@ -9,10 +9,13 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.type.watch" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,17 +23,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".HomeActivity">
+        <activity android:name=".Actividades.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PedidoActivity"/>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SelectPlato" />
-        <activity android:name=".AddPlato" />
+        <activity android:name=".Actividades.PedidoActivity"/>
+        <activity android:name=".Actividades.MainActivity" />
+        <activity android:name=".Actividades.SelectPlato" />
+        <activity android:name=".Actividades.AddPlato" />
 
         <receiver
             android:name="gautero.tuma.sendmealretry.notification.MyReciver"

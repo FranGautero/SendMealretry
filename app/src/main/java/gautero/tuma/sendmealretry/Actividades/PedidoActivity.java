@@ -1,4 +1,4 @@
-package gautero.tuma.sendmealretry;
+package gautero.tuma.sendmealretry.Actividades;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +19,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
-import gautero.tuma.sendmealretry.asyncTaskRes.ConfirmarPedidoTask;
-import gautero.tuma.sendmealretry.database.AppRepository;
+import gautero.tuma.sendmealretry.R;
+import gautero.tuma.sendmealretry.asyncTaskLab03.ConfirmarPedidoTask;
 import gautero.tuma.sendmealretry.database.OnPedidoResultCallback;
 import gautero.tuma.sendmealretry.database.PedidoDao;
 import gautero.tuma.sendmealretry.database.PedidoRepository;

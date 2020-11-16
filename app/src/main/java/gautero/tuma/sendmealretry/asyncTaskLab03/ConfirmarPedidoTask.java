@@ -1,4 +1,4 @@
-package gautero.tuma.sendmealretry.asyncTaskRes;
+package gautero.tuma.sendmealretry.asyncTaskLab03;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
@@ -6,14 +6,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.SystemClock;
 
 import java.util.List;
 
-import gautero.tuma.sendmealretry.database.OnPedidoResultCallback;
-import gautero.tuma.sendmealretry.database.OnPlatoResultCallback;
-import gautero.tuma.sendmealretry.database.PedidoDao;
-import gautero.tuma.sendmealretry.database.PlatoDao;
 import gautero.tuma.sendmealretry.model.Pedido;
 import gautero.tuma.sendmealretry.notification.MyReciver;
 

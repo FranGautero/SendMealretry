@@ -1,4 +1,4 @@
-package gautero.tuma.sendmealretry;
+package gautero.tuma.sendmealretry.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import java.util.List;
 
+import gautero.tuma.sendmealretry.R;
 import gautero.tuma.sendmealretry.adapters.PlatoRecyclerAdapter;
 import gautero.tuma.sendmealretry.database.AppRepository;
 import gautero.tuma.sendmealretry.model.Plato;
