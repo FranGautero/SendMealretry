@@ -26,9 +26,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeActivity extends AppCompatActivity implements AppRepository.OnResultCallback{
     final static int CODIGO_BUSCAR_PLATO = 420;
-    Application context = this.getApplication();
-
     AppRepository.OnResultCallback callback = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,8 +94,10 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
                 List<Plato> Platos = response.body();
 
                 assert Platos != null;
+
+                AppRepository repository = new AppRepository(HomeActivity.super.getApplication(), callback);
+
                 for(Plato p : Platos){
-                    AppRepository repository = new AppRepository(context, callback);
                     repository.insertar(p);
                 }
             }
