@@ -11,7 +11,7 @@ import java.util.List;
 
 import gautero.tuma.sendmealretry.model.Plato;
 
-//TODO CHECKEAR QUE ONDA EL CONVERTER ESTE
+
 
 public class Converters {
     @TypeConverter

@@ -51,6 +51,8 @@ public class AddPlato extends AppCompatActivity implements AppRepository.OnResul
                 AppRepository repository = new AppRepository(context, callback);
                 repository.insertar(platonuevo);
 
+                //TODO agregar plato al json server
+
                 Toast.makeText(AddPlato.this, "Plato Guardado", Toast.LENGTH_SHORT).show();
                 finish();
 
