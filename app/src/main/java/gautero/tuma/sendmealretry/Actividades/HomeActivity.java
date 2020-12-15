@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.2:3001/")
+                .baseUrl("http://192.168.1.5:3001/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
