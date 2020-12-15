@@ -12,7 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -59,6 +61,13 @@ public class PlatoRecyclerAdapter extends RecyclerView.Adapter<PlatoRecyclerAdap
         String dc = "   Descripción: " + platoList.get(position).getDescripcion();
         holder.desc.setText(dc);
         holder.imageAdd.setImageResource(R.drawable.ic_baseline_add_24);
+
+//        String link = "gs://tactile-bolt-296021.appspot.com/Fotos/"+platoList.get(position).getTitulo();
+//        Picasso.with(context).load(link).into(holder.imagePlato);
+
+
+            holder.imagePlato.setImageResource(R.drawable.ramen);
+
 
         Activity sp = SelectPlato.fa;
         if(sp.getIntent().getExtras().getInt("addCode") == 2){

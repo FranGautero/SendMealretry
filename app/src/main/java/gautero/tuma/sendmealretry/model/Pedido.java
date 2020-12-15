@@ -7,6 +7,8 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import gautero.tuma.sendmealretry.database.Converters;
 
 @Entity(tableName = "Pedidos")
@@ -41,6 +43,11 @@ public class Pedido {
 
     @ColumnInfo(name = "delivery")
     private Boolean delivery;
+
+
+
+ //   private LatLng ubi;
+//    private LatLng ubiResto;
 
     public Pedido() {
     }
@@ -78,6 +85,19 @@ public class Pedido {
         this.platos = platos;
     }
 
-
-
+//    public LatLng getUbi() {
+//        return ubi;
+//    }
+//
+//    public void setUbi(LatLng ubi) {
+//        this.ubi = ubi;
+//    }
+//
+//    public LatLng getUbiResto() {
+//        return ubiResto;
+//    }
+//
+//    public void setUbiResto(LatLng ubiResto) {
+//        this.ubiResto = ubiResto;
+//    }
 }

@@ -38,6 +38,8 @@
     <string name="Carrito">Carrito</string>
     <string name="Confirmar">Confirmar Pedido</string>
     <string name="Confirmado">Pedido Confirmado</string>
-
+    <string name="google_maps_key">AIzaSyC2DONctgKjlv2IQ8uzguSW2zhorejwbWA</string>
+    <string name="SacarFoto">Tomar Foto</string>
+    <string name="BuscarFoto">Seleccionar Foto</string>
 
 </resources>

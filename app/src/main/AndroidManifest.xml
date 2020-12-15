@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-feature android:name="android.hardware.type.watch" />
 
     <application
@@ -22,6 +22,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <activity android:name=".Actividades.HomeActivity">
             <intent-filter>
@@ -34,6 +39,7 @@
         <activity android:name=".Actividades.MainActivity" />
         <activity android:name=".Actividades.SelectPlato" />
         <activity android:name=".Actividades.AddPlato" />
+        <activity android:name=".Actividades.MapActivity" />
 
         <receiver
             android:name="gautero.tuma.sendmealretry.notification.MyReciver"

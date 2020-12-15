@@ -69,13 +69,44 @@
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:hint="@string/calorias" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="20dp">
+
+            <Button
+                android:id="@+id/buttonSacarFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/SacarFoto" />
+
+            <Button
+                android:id="@+id/ButtonBuscarFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/BuscarFoto" />
+
+
         </LinearLayout>
 
         <Button
             android:id="@+id/guardarbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/guardar" />
+            android:text="@string/guardar"
+            android:layout_margin="15dp"/>
+
+        <ImageView
+            android:id="@+id/fotoPlato"
+            android:layout_width="match_parent"
+            android:layout_height="189dp"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

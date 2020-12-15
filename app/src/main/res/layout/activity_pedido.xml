@@ -90,6 +90,12 @@
                     android:hint="@string/Direccion"
                     android:inputType="textPersonName" />
 
+                <Button
+                    android:id="@+id/buttonUbicación"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seleccionar Ubicacion" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

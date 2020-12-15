@@ -1,5 +1,6 @@
 package gautero.tuma.sendmealretry.Actividades;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -8,7 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -26,12 +33,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeActivity extends AppCompatActivity implements AppRepository.OnResultCallback{
     final static int CODIGO_BUSCAR_PLATO = 420;
+    private static final String TAG = "tag";
     AppRepository.OnResultCallback callback = this;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // Inicializar Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+        // Iniciar Session como usuario anónimo
+        signInAnonymously();
 
         Toolbar tb = findViewById(R.id.toolbarHome);
 
@@ -76,7 +90,7 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.2:3001/")
+                .baseUrl("http://192.168.1.5:3001/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -113,5 +127,24 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
     @Override
     public void onResult(List result) {
 
+    }
+
+    private void signInAnonymously() {
+        mAuth.signInAnonymously()
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Exito
+                            Log.d(TAG, "signInAnonymously:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        } else {
+                            // Error
+                            Log.w(TAG, "signInAnonymously:failure", task.getException());
+                            Toast.makeText(HomeActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

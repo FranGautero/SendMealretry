@@ -14,10 +14,12 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import gautero.tuma.sendmealretry.R;
 import gautero.tuma.sendmealretry.asyncTaskLab03.ConfirmarPedidoTask;
@@ -35,11 +37,11 @@ public class PedidoActivity extends AppCompatActivity implements OnPedidoResultC
     OnPedidoResultCallback callback =  this;
 
     private static final int CODIGO_VER_PLATOS = 421;
-    Button sp, cp;
+    private static final int CODIGO_SELECT_UBI = 422;
+    Button sp, cp, seleccionarUbi;
     String lista = "";
     List<Plato> listaPlatos = new ArrayList<Plato>();
-    PlatoDao platoDao;
-    PedidoDao pedidoDao;
+
 
 
     @Override
@@ -55,6 +57,18 @@ public class PedidoActivity extends AppCompatActivity implements OnPedidoResultC
 
                 finish();
                 return false;
+            }
+        });
+
+        seleccionarUbi = findViewById(R.id.buttonUbicación);
+
+        seleccionarUbi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PedidoActivity.this, MapActivity.class);
+                startActivityForResult(i, CODIGO_SELECT_UBI);
+
+
             }
         });
 
@@ -89,6 +103,9 @@ public class PedidoActivity extends AppCompatActivity implements OnPedidoResultC
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Pedido pedido = new Pedido();
+
         if(requestCode==CODIGO_VER_PLATOS){
 
             //en teoria aca recupero el objeto plato que seleccione
@@ -104,7 +121,6 @@ public class PedidoActivity extends AppCompatActivity implements OnPedidoResultC
             @SuppressLint("UseSwitchCompatOrMaterialCode") Switch del = findViewById(R.id.switch2);
             boolean delivery;
             delivery = del.isChecked();
-            Pedido pedido = new Pedido();
             pedido.setDelivery(delivery);
             pedido.setDireccion(dir);
             pedido.setEmail(email);
@@ -120,6 +136,18 @@ public class PedidoActivity extends AppCompatActivity implements OnPedidoResultC
             tv.setText(lista);
 
         }
+
+        // Data del MAPA
+        if(requestCode==CODIGO_VER_PLATOS){
+
+            LatLng ubi = Objects.requireNonNull(getIntent().getExtras()).getParcelable("ubi");
+            LatLng ubiResto = Objects.requireNonNull(getIntent().getExtras()).getParcelable("ubiResto");
+
+           // pedido.setUbi(ubi);
+           // pedido.setUbiResto(ubiResto);
+
+        }
+
     }
 
     @Override
