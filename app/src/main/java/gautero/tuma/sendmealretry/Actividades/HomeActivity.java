@@ -27,6 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeActivity extends AppCompatActivity implements AppRepository.OnResultCallback{
     final static int CODIGO_BUSCAR_PLATO = 420;
     AppRepository.OnResultCallback callback = this;
+    private List tos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +98,17 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
                 AppRepository repository = new AppRepository(HomeActivity.super.getApplication(), callback);
 
-                for(Plato p : Platos){
-                    repository.insertar(p);
+                repository.buscarTodos();
+
+                //Checkear que la db no tiene nada o tiene menos que el apirest
+
+                Log.d("tamaño de platos", "" +Platos.size());
+                Log.d("tamaño de tos", "" +tos.size());
+
+                if(tos == null || tos.size() < Platos.size()) {
+                    for (Plato p : Platos) {
+                        repository.insertar(p);
+                    }
                 }
             }
 
@@ -112,6 +122,6 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
     @Override
     public void onResult(List result) {
-
+            tos = result;
     }
 }
