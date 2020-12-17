@@ -33,8 +33,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeActivity extends AppCompatActivity implements AppRepository.OnResultCallback{
     final static int CODIGO_BUSCAR_PLATO = 420;
-    private static final String TAG = "tag";
     AppRepository.OnResultCallback callback = this;
+    private List tos;
     private FirebaseAuth mAuth;
 
     @Override
@@ -44,12 +44,16 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
         // Inicializar Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        // Iniciar Session como usuario anónimo
+//        // Iniciar Session como usuario anónimo
         signInAnonymously();
 
         Toolbar tb = findViewById(R.id.toolbarHome);
 
-        getPlatoList();
+        AppRepository repository = new AppRepository(HomeActivity.super.getApplication(), callback);
+
+        repository.buscarTodos();
+
+
 
         tb.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -109,10 +113,12 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
                 assert Platos != null;
 
-                AppRepository repository = new AppRepository(HomeActivity.super.getApplication(), callback);
 
-                for(Plato p : Platos){
-                    repository.insertar(p);
+                if(tos.isEmpty() || tos.size() < Platos.size()) {
+                    AppRepository repository2 = new AppRepository(HomeActivity.super.getApplication(), callback);
+                    for (Plato p : Platos) {
+                        repository2.insertar(p);
+                    }
                 }
             }
 
@@ -126,8 +132,12 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
     @Override
     public void onResult(List result) {
-
+        tos = result;
+        getPlatoList();
     }
+
+
+
 
     private void signInAnonymously() {
         mAuth.signInAnonymously()
@@ -136,11 +146,11 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Exito
-                            Log.d(TAG, "signInAnonymously:success");
+                            Log.d("TAG", "signInAnonymously:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                         } else {
                             // Error
-                            Log.w(TAG, "signInAnonymously:failure", task.getException());
+                            Log.w("TAG", "signInAnonymously:failure", task.getException());
                             Toast.makeText(HomeActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
