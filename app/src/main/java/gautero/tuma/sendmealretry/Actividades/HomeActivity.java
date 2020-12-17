@@ -36,7 +36,11 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
         Toolbar tb = findViewById(R.id.toolbarHome);
 
-        getPlatoList();
+        AppRepository repository = new AppRepository(HomeActivity.super.getApplication(), callback);
+
+        repository.buscarTodos();
+
+
 
         tb.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -96,18 +100,17 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
 
                 assert Platos != null;
 
-                AppRepository repository = new AppRepository(HomeActivity.super.getApplication(), callback);
 
-                repository.buscarTodos();
 
                 //Checkear que la db no tiene nada o tiene menos que el apirest
 
-                Log.d("tamaño de platos", "" +Platos.size());
-                Log.d("tamaño de tos", "" +tos.size());
+//                Log.d("tamaño de platos", "" +Platos.size());
+//               Log.d("tamaño de tos", "" +tos.size());
 
-                if(tos == null || tos.size() < Platos.size()) {
+                if(tos.isEmpty() || tos.size() < Platos.size()) {
+                    AppRepository repository2 = new AppRepository(HomeActivity.super.getApplication(), callback);
                     for (Plato p : Platos) {
-                        repository.insertar(p);
+                        repository2.insertar(p);
                     }
                 }
             }
@@ -123,5 +126,6 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
     @Override
     public void onResult(List result) {
             tos = result;
+            getPlatoList();
     }
 }
