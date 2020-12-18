@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -46,6 +47,24 @@ public class HomeActivity extends AppCompatActivity implements AppRepository.OnR
         mAuth = FirebaseAuth.getInstance();
 //        // Iniciar Session como usuario anónimo
         signInAnonymously();
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            // Error
+                            return;
+                        }
+
+                        // FCM token
+                        String token = task.getResult();
+
+                        // Imprimirlo en un toast y en logs
+                        Log.d("[FCM - TOKEN]", token);
+                        Toast.makeText(HomeActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
         Toolbar tb = findViewById(R.id.toolbarHome);
 
